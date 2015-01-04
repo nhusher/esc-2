@@ -1,0 +1,24 @@
+{
+  "name": "eve-ship-comparator",
+  "version": "0.0.1",
+  "description": "A comparator for eve online spacecraft",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "node src/js/server/index.js"
+  },
+  "author": "Nicholas Husher <nhusher@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.10.6",
+    "react": "^0.12.2",
+    "serve-static": "^1.7.2",
+    "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "gulp": "3.8.10",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.2",
+    "vinyl-transform": "^1.0.0"
+  }
+}
