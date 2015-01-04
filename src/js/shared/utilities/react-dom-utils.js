@@ -49,7 +49,13 @@ function htmlStringNode(tag, args, children) {
 }
 
 function componentNode(tag, args, children) {
-    return React.createElement.apply(React, [tag, args].concat(children));
+    var params = [ tag, args ];
+    
+    if(children.length) {
+        params.push(children);
+    }
+
+    return React.createElement.apply(React, params);
 }
 
 function isObject(v) {
