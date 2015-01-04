@@ -1,18 +1,17 @@
 var gulp = require('gulp');
-var browserify = require('browserify');
-var transform = require('vinyl-transform');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var browserify = require('gulp-browserify');
 
-gulp.task('build-js', function () {
-    var browserified = transform(function(filename) {
-        var b = browserify(filename);
-        return b.bundle();
-    });
-  
-    return gulp.src(['./src/js/client/index.js'])
-        .pipe(browserified)
-    //    .pipe(uglify())
-        .pipe(rename("client.js"))
-        .pipe(gulp.dest('./public/js/'));
+// This is so fucking terrible
+process.env.NODE_ENV = 'production';
+
+gulp.task('build-js', function() {
+  return gulp.src('src/js/client/index.js')
+    .pipe(browserify({transform: [ 'envify' ]}))
+    .pipe(rename('client.js'))
+    .pipe(gulp.dest('public/js/'))
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('public/js/'));
 });
